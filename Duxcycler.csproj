@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\netstandard\OpenCvSharp4.runtime.win.props" Condition="Exists('packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\netstandard\OpenCvSharp4.runtime.win.props')" />
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E08416F-253D-4A7F-BEF9-6607AABE1D58}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Duxcycler</RootNamespace>
+    <AssemblyName>Duxcycler</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Duxcycler_icon_64x64.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Controls, Version=2.2.5.0, Culture=neutral, PublicKeyToken=a8ac264d1dc6b9d9, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.Controls.2.2.5\lib\AForge.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging, Version=2.2.5.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.Imaging.2.2.5\lib\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math, Version=2.2.5.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="CameraControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Source\CameraControlLib.dll</HintPath>
+    </Reference>
+    <Reference Include="CustomClassLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Source\CustomClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="CustomWindowForm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Source\CustomWindowForm.dll</HintPath>
+    </Reference>
+    <Reference Include="DirectShowLib, Version=2.1.0.1599, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DirectShowLib.1.0.0\lib\DirectShowLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="HidLibrary, Version=3.2.49.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\hidlibrary.3.3.40\lib\net45\HidLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Filtering, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MathNet.Filtering.0.7.0\lib\net461\MathNet.Filtering.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MathNet.Numerics.5.0.0\lib\net461\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>packages\OpenCvSharp4.4.7.0.20230115\lib\netstandard2.0\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>packages\OpenCvSharp4.Extensions.4.7.0.20230115\lib\netstandard2.0\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
+      <HintPath>packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ScottPlot, Version=4.1.63.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
+      <HintPath>packages\ScottPlot.4.1.63\lib\net462\ScottPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="ScottPlot.WinForms, Version=4.1.63.0, Culture=neutral, PublicKeyToken=5df1dfa5321e734b, processorArchitecture=MSIL">
+      <HintPath>packages\ScottPlot.WinForms.4.1.63\lib\net472\ScottPlot.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SQLite.Net.Core-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.Net.Platform.Generic, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SQLite.Net-PCL.3.1.1\lib\net40\SQLite.Net.Platform.Generic.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.Net.Platform.Win32, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SQLite.Net-PCL.3.1.1\lib\net4\SQLite.Net.Platform.Win32.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Drawing.Common.5.0.3\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="ZedGraph, Version=5.1.7.430, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <HintPath>packages\ZedGraph.5.1.7\lib\net35-Client\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Source\Base.cs" />
+    <Compile Include="Source\Database\ImageInfo.cs" />
+    <Compile Include="Source\Database\ResultInfo.cs" />
+    <Compile Include="Source\Database\ResultManager.cs" />
+    <Compile Include="Source\HW\Action_PCR.cs" />
+    <Compile Include="Source\HW\HidDeviceWrapper.cs" />
+    <Compile Include="Source\HW\PCR_Task.cs" />
+    <Compile Include="Source\HW\RxAction.cs" />
+    <Compile Include="Source\HW\TxAction.cs" />
+    <Compile Include="Source\Group\WellManager.cs" />
+    <Compile Include="Source\Group\CollapseBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Source\Group\ColorButton.cs" />
+    <Compile Include="Source\Group\Group_Satge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Group\Group_Step.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Group\OwnerDrawButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Source\HW\SerialManager.cs" />
+    <Compile Include="Source\Image\BitmapImageCtl.cs" />
+    <Compile Include="Source\Image\ImagePictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Source\Image\ImageROIGrid.cs" />
+    <Compile Include="Source\Image\ImageUsedMath.cs" />
+    <Compile Include="Source\Image\IRImagePictureBox.cs" />
+    <Compile Include="Source\Image\MultiSelectedROIGuide.cs" />
+    <Compile Include="Source\Image\PainChartShape.cs" />
+    <Compile Include="Source\Image\RefROIShape.cs" />
+    <Compile Include="Source\Image\ROIShape.cs" />
+    <Compile Include="Source\Page\IntroPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Page\IntroPage.designer.cs">
+      <DependentUpon>IntroPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Page\MainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Page\MainPage.designer.cs">
+      <DependentUpon>MainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Page\SetupPageA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Page\SetupPageA.designer.cs">
+      <DependentUpon>SetupPageA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Popup\FormModalBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Popup\FormModalBack.designer.cs">
+      <DependentUpon>FormModalBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Print\CoolPrintPreviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Print\CoolPrintPreviewDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Print\CoolPrintPreviewDialog.designer.cs">
+      <DependentUpon>CoolPrintPreviewDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Util\ColorBtn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Source\Util\MedianFilter.cs" />
+    <EmbeddedResource Include="Source\Group\CollapseBox.resx">
+      <DependentUpon>CollapseBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Group\Group_Satge.resx">
+      <DependentUpon>Group_Satge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Group\Group_Step.resx">
+      <DependentUpon>Group_Step.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Group\OwnerDrawButton.resx">
+      <DependentUpon>OwnerDrawButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Page\IntroPage.resx">
+      <DependentUpon>IntroPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Page\MainPage.resx">
+      <DependentUpon>MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Page\SetupPageA.resx">
+      <DependentUpon>SetupPageA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Popup\FormModalBack.resx">
+      <DependentUpon>FormModalBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Print\CoolPrintPreviewDialog.resx">
+      <DependentUpon>CoolPrintPreviewDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Source\Util\ColorBtn.resx">
+      <DependentUpon>ColorBtn.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Source\Configuration.ini" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\INTRO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SUBMEMU1_BTN_Disable.png" />
+    <None Include="Resources\SUBMEMU1_BTN_MDown.png" />
+    <None Include="Resources\SUBMEMU1_BTN_Normal.png" />
+    <None Include="Resources\AUTOWL_Disable.png" />
+    <None Include="Resources\AUTOWL_MDown.png" />
+    <None Include="Resources\AUTOWL_Normal.png" />
+    <None Include="Resources\BackImageA.png" />
+    <None Include="Resources\BackImageB.png" />
+    <None Include="Resources\BTN_1X1_Disable.png" />
+    <None Include="Resources\BTN_1X1_MDown.png" />
+    <None Include="Resources\BTN_1X1_Normal.png" />
+    <None Include="Resources\BTN_1X2_Disable.png" />
+    <None Include="Resources\BTN_1X2_MDown.png" />
+    <None Include="Resources\BTN_1X2_Normal.png" />
+    <None Include="Resources\BTN_2X2_Disable.png" />
+    <None Include="Resources\BTN_2X2_MDown.png" />
+    <None Include="Resources\BTN_2X2_Normal.png" />
+    <None Include="Resources\BTN_3X3_Disable.png" />
+    <None Include="Resources\BTN_3X3_MDown.png" />
+    <None Include="Resources\BTN_3X3_Normal.png" />
+    <None Include="Resources\BTN_4X4_Disable.png" />
+    <None Include="Resources\BTN_4X4_MDown.png" />
+    <None Include="Resources\BTN_4X4_Normal.png" />
+    <None Include="Resources\CLEAR_Disable.png" />
+    <None Include="Resources\CLEAR_MDown.png" />
+    <None Include="Resources\CLEAR_Normal.png" />
+    <None Include="Resources\CLEARALL_Disable.png" />
+    <None Include="Resources\CLEARALL_MDown.png" />
+    <None Include="Resources\CLEARALL_Normal.png" />
+    <None Include="Resources\CLOSE_Disable.png" />
+    <None Include="Resources\CLOSE_MDown.png" />
+    <None Include="Resources\CLOSE_Normal.png" />
+    <None Include="Resources\COMPARE_Disable.png" />
+    <None Include="Resources\COMPARE_MDown.png" />
+    <None Include="Resources\COMPARE_Normal.png" />
+    <None Include="Resources\Down_Disable.png" />
+    <None Include="Resources\Down_MDown.png" />
+    <None Include="Resources\Down_Normal.png" />
+    <None Include="Resources\EXAM_Disable.png" />
+    <None Include="Resources\EXAM_MDown.png" />
+    <None Include="Resources\EXAM_Normal.png" />
+    <None Include="Resources\FA_ADD_Disable.png" />
+    <None Include="Resources\FA_ADD_MDown.png" />
+    <None Include="Resources\FA_ADD_Normal.png" />
+    <None Include="Resources\FA_DEL_Disable.png" />
+    <None Include="Resources\FA_DEL_MDown.png" />
+    <None Include="Resources\FA_DEL_Normal.png" />
+    <None Include="Resources\FA_EDIT_Disable.png" />
+    <None Include="Resources\FA_EDIT_MDown.png" />
+    <None Include="Resources\FA_EDIT_Normal.png" />
+    <None Include="Resources\FILEOPEN_Disable.png" />
+    <None Include="Resources\FILEOPEN_MDown.png" />
+    <None Include="Resources\FILEOPEN_Normal.png" />
+    <None Include="Resources\GARDLINEANGLE_Disable.png" />
+    <None Include="Resources\GARDLINEANGLE_MDown.png" />
+    <None Include="Resources\GARDLINEANGLE_Normal.png" />
+    <None Include="Resources\GARDLINEXMARK_Disable.png" />
+    <None Include="Resources\GARDLINEXMARK_MDown.png" />
+    <None Include="Resources\GARDLINEXMARK_Normal.png" />
+    <None Include="Resources\ICON_1x1_Disable.png" />
+    <None Include="Resources\ICON_1x1_MDown.png" />
+    <None Include="Resources\ICON_1x1_Normal.png" />
+    <None Include="Resources\ICON_1x2_Disable.png" />
+    <None Include="Resources\ICON_1x2_MDown.png" />
+    <None Include="Resources\ICON_1x2_Normal.png" />
+    <None Include="Resources\ICON_2x2_Disable.png" />
+    <None Include="Resources\ICON_2x2_MDown.png" />
+    <None Include="Resources\ICON_2x2_Normal.png" />
+    <None Include="Resources\ICON_3x3_Disable.png" />
+    <None Include="Resources\ICON_3x3_MDown.png" />
+    <None Include="Resources\ICON_3x3_Normal.png" />
+    <None Include="Resources\ICON_4x4_Disable.png" />
+    <None Include="Resources\ICON_4x4_MDown.png" />
+    <None Include="Resources\ICON_4x4_Normal.png" />
+    <None Include="Resources\ICON_FileOpen_Disable.png" />
+    <None Include="Resources\ICON_FileOpen_MDown.png" />
+    <None Include="Resources\ICON_FileOpen_Normal.png" />
+    <None Include="Resources\ICON_SCAN_Disable.png" />
+    <None Include="Resources\ICON_SCAN_MDown.png" />
+    <None Include="Resources\ICON_SCAN_Normal.png" />
+    <None Include="Resources\ICON_Send_Disable.png" />
+    <None Include="Resources\ICON_Send_MDown.png" />
+    <None Include="Resources\ICON_Send_Normal.png" />
+    <None Include="Resources\INTRO1.png" />
+    <None Include="Resources\magnifierGlass.png" />
+    <None Include="Resources\PAINCHART_ANTERIOR.png" />
+    <None Include="Resources\PAINCHART_FOOT.png" />
+    <None Include="Resources\PAINCHART_LTLAT.png" />
+    <None Include="Resources\PAINCHART_POSTERIOR.png" />
+    <None Include="Resources\PAINCHART_RTLAT.png" />
+    <None Include="Resources\PAN_1_Disable.png" />
+    <None Include="Resources\PAN_1_MDown.png" />
+    <None Include="Resources\PAN_1_Normal.png" />
+    <None Include="Resources\PAN_2_Disable.png" />
+    <None Include="Resources\PAN_2_MDown.png" />
+    <None Include="Resources\PAN_2_Normal.png" />
+    <None Include="Resources\PAN_4_Disable.png" />
+    <None Include="Resources\PAN_4_MDown.png" />
+    <None Include="Resources\PAN_4_Normal.png" />
+    <None Include="Resources\POLYGON_Disable.png" />
+    <None Include="Resources\POLYGON_MDown.png" />
+    <None Include="Resources\POLYGON_Normal.png" />
+    <None Include="Resources\ROICIRCLE_Disable.png" />
+    <None Include="Resources\ROICIRCLE_MDown.png" />
+    <None Include="Resources\ROICIRCLE_Normal.png" />
+    <None Include="Resources\ROILOZENGE_Disable.png" />
+    <None Include="Resources\ROILOZENGE_MDown.png" />
+    <None Include="Resources\ROILOZENGE_Normal.png" />
+    <None Include="Resources\ROIRECTANGLE_Disable.png" />
+    <None Include="Resources\ROIRECTANGLE_MDown.png" />
+    <None Include="Resources\ROIRECTANGLE_Normal.png" />
+    <None Include="Resources\ROISAVED_Disable.png" />
+    <None Include="Resources\ROISAVED_MDown.png" />
+    <None Include="Resources\ROISAVED_Normal.png" />
+    <None Include="Resources\SEND_Disable.png" />
+    <None Include="Resources\SEND_MDown.png" />
+    <None Include="Resources\SEND_Normal.png" />
+    <None Include="Resources\StandDown_Disable.png" />
+    <None Include="Resources\StandDown_MDown.png" />
+    <None Include="Resources\StandDown_Normal.png" />
+    <None Include="Resources\StandUP_Disable.png" />
+    <None Include="Resources\StandUP_MDown.png" />
+    <None Include="Resources\StandUP_Normal.png" />
+    <None Include="Resources\SUBMEMU1_BTN_Disable1.png" />
+    <None Include="Resources\SUBMEMU1_BTN_MDown1.png" />
+    <None Include="Resources\SUBMEMU1_BTN_Normal1.png" />
+    <None Include="Resources\THUMBNAILDOWN_H_MDown.png" />
+    <None Include="Resources\THUMBNAILDOWN_H_Normal.png" />
+    <None Include="Resources\THUMBNAILDOWN_V_MDown.png" />
+    <None Include="Resources\THUMBNAILDOWN_V_Normal.png" />
+    <None Include="Resources\THUMBNAILUP_H_MDown.png" />
+    <None Include="Resources\THUMBNAILUP_H_Normal.png" />
+    <None Include="Resources\THUMBNAILUP_V_MDown.png" />
+    <None Include="Resources\THUMBNAILUP_V_Normal.png" />
+    <None Include="Resources\Tilting_Center.png" />
+    <None Include="Resources\Tilting_Down.png" />
+    <None Include="Resources\Tilting_Left.png" />
+    <None Include="Resources\Tilting_Normal.png" />
+    <None Include="Resources\Tilting_Right.png" />
+    <None Include="Resources\Tilting_Up.png" />
+    <None Include="Resources\UP_Disable.png" />
+    <None Include="Resources\UP_MDown.png" />
+    <None Include="Resources\UP_Normal.png" />
+    <None Include="Resources\VIEW_Disable.png" />
+    <None Include="Resources\VIEW_MDown.png" />
+    <None Include="Resources\VIEW_Normal.png" />
+    <None Include="Resources\WLBG_Disable.png" />
+    <None Include="Resources\WLBG_MDown.png" />
+    <None Include="Resources\WLBG_Normal.png" />
+    <None Include="Resources\WellBkColor_Down.png" />
+    <None Include="Resources\WellBkColor_Up.png" />
+    <None Include="Resources\WellBk_Down.png" />
+    <None Include="Resources\WellBk_Up.png" />
+    <None Include="Resources\ZoomOut.png" />
+    <None Include="Resources\ZoomFit.png" />
+    <None Include="Resources\ZoomIn.png" />
+    <None Include="Resources\ZoomOut_Down.png" />
+    <None Include="Resources\ZoomOut_Normal.png" />
+    <None Include="Resources\ZoomFit_Disable.png" />
+    <None Include="Resources\ZoomFit_MDown.png" />
+    <None Include="Resources\ZoomFit_Normal.png" />
+    <None Include="Resources\ZoomIn_Disable.png" />
+    <None Include="Resources\ZoomIn_MDown.png" />
+    <None Include="Resources\ZoomIn_Normal.png" />
+    <None Include="Resources\ZoomOut_Disable.png" />
+    <None Include="Resources\Sample_Run.PNG" />
+    <None Include="Resources\Sample_Method.PNG" />
+    <None Include="Resources\LED_Green.png" />
+    <None Include="Resources\LED_Red.png" />
+    <None Include="Resources\LED_Blue.png" />
+    <None Include="Resources\LED_Disable.png" />
+    <Content Include="Duxcycler_icon_32x32.ico" />
+    <Content Include="Duxcycler_icon_64x64.ico" />
+    <Content Include="License-LGPL.txt" />
+    <Content Include="Resources\Capture_Disable.png" />
+    <Content Include="Resources\Capture_MDown.png" />
+    <Content Include="Resources\Capture_Normal.png" />
+    <None Include="Resources\end image.png" />
+    <None Include="Resources\List_Remove.png" />
+    <None Include="Resources\Task_N.png" />
+    <None Include="Resources\Task_S.png" />
+    <None Include="Resources\Task_U.png" />
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\netstandard\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\netstandard\OpenCvSharp4.runtime.win.props'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
